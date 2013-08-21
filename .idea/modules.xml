@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/design-pattern/design-pattern.iml" filepath="$PROJECT_DIR$/design-pattern/design-pattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/index/index.iml" filepath="$PROJECT_DIR$/index/index.iml" />
+      <module fileurl="file://$PROJECT_DIR$/input-split/input-split.iml" filepath="$PROJECT_DIR$/input-split/input-split.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mapreduce.iml" filepath="$PROJECT_DIR$/mapreduce.iml" />
+      <module fileurl="file://$PROJECT_DIR$/radius/radius.iml" filepath="$PROJECT_DIR$/radius/radius.iml" />
+    </modules>
+  </component>
+</project>
+
