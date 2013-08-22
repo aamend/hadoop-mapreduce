@@ -27,10 +27,10 @@ public class PatternRecordReader extends RecordReader<LongWritable, Text> {
 	private LongWritable key = new LongWritable();
 	private Text value = new Text();
 	private final static Text EOL = new Text("\n");
+    private final static int MAX_LINES_RADIUS = 100;
 	private Pattern delimiterPattern;
 	private String delimiterRegex;
 	private int maxLengthRecord;
-	// private Text lastDelimValue = new Text();
 
 	private static final Log LOG = LogFactory.getLog(RecordReader.class);
 
@@ -147,7 +147,7 @@ public class PatternRecordReader extends RecordReader<LongWritable, Text> {
 		text.clear();
 		Text tmp = new Text();
 
-		for (int i = 0; i < maxBytesToConsume; i++) {
+		for (int i = 0; i < MAX_LINES_RADIUS; i++) {
 
 			int offsetTmp = in.readLine(tmp, maxLineLength, maxBytesToConsume);
 			offset += offsetTmp;
