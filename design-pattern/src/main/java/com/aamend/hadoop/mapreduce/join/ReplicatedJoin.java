@@ -9,10 +9,9 @@ import java.util.regex.Pattern;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.filecache.DistributedCache;
+import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.LocatedFileStatus;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.fs.RemoteIterator;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -73,12 +72,13 @@ public class ReplicatedJoin {
 		// Small dataset to Join
 		FileSystem hdfs = FileSystem.get(conf);
 		LOGGER.info("Find files in path " + args[0]);
-		RemoteIterator<LocatedFileStatus> ri = hdfs.listFiles(
-				new Path(args[0]), true);
+        FileStatus[] fss = hdfs.listStatus(new Path(args[0]));
+
+
+
 		boolean atLeastOne = false;
-		while (ri.hasNext()) {
-			LocatedFileStatus lfs = ri.next();
-			Path file = lfs.getPath();
+        for ( FileStatus fs : fss) {
+			Path file = fs.getPath();
 			LOGGER.info("Adding file " + file.toString()
 					+ " to distributed cache");
 			DistributedCache.addFileToClassPath(file, conf);

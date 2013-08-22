@@ -28,14 +28,7 @@ public class MatchingFileInputFormat extends
 	@Override
 	public RecordReader<LongWritable, Text> createRecordReader(
 			InputSplit split, TaskAttemptContext context) {
-
-		byte[] recordDelimiterBytes = null;
-		String delimiter = context.getConfiguration().get(
-				"textinputformat.record.delimiter");
-		if (null != delimiter) {
-			recordDelimiterBytes = delimiter.getBytes();
-		}
-		return new LineRecordReader(recordDelimiterBytes);
+		return new LineRecordReader();
 	}
 
 	@Override

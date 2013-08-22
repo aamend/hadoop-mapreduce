@@ -1,5 +1,6 @@
 package com.aamend.hadoop.mapreduce.utils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +11,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.MD5Hash;
 import org.apache.hadoop.io.SequenceFile;
-import org.apache.hadoop.io.SequenceFile.Reader.Option;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.mapreduce.Counter;
 import org.apache.hadoop.mapreduce.Counters;
@@ -58,16 +58,21 @@ public class Utils {
 
 		List<String> inputSplits = new ArrayList<String>();
 		FileSystem hdfs = FileSystem.get(conf);
-		if (!hdfs.exists(path) || !hdfs.isDirectory(path))
-			throw new Exception("Path " + path + " is not a directory");
+
+		if (hdfs.exists(path)){
+            FileStatus fileStatus = hdfs.getFileStatus(path);
+            if(!fileStatus.isDir()){
+                throw new Exception("Path " + path + " is not a directory");
+            }
+        } else {
+            throw new Exception("Path " + path + " does not exist");
+        }
 
 		FileStatus[] fss = hdfs.globStatus(new Path(path + "/part-*"));
 		for (FileStatus status : fss) {
 
 			Path partFile = status.getPath();
-			SequenceFile.Reader reader = null;
-			Option pathOpt = SequenceFile.Reader.file(partFile);
-			reader = new SequenceFile.Reader(conf, pathOpt);
+			SequenceFile.Reader reader = new SequenceFile.Reader(hdfs, partFile, conf);
 
 			// Configure Sequence file
 			Writable key = (Writable) ReflectionUtils.newInstance(

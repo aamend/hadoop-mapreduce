@@ -19,25 +19,9 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 public class InternetAccessCount {
 
-	/**
-	 * 
-	 * 1. Export project hadoop Map Reduce as a jar file 2. scp jar file to
-	 * hadoop jobtracker 3. Execute
-	 * "hadoop jar %JAR%.jar com.aamend.hadoop.mapreduce.job.InternetAccessDriver"
-	 * 
-	 * Arguments are: --------------
-	 * 
-	 * outputPathDir = args[0] => output directory where output files will be
-	 * stored inputPathDir = args[1] => input directory where files will be read
-	 * targetValue = args[2] => ip address to lookup fromDate = args[3] => Min
-	 * Date for query (DDMMYYYYHHMISS) toDate = args[4] => Max Date for query
-	 * (DDMMYYYYHHMISS) priority = args[5] => Hadoop priority (0-4)
-	 */
 	public static void main(String[] args) throws Exception {
 
 		Configuration conf = new Configuration();
-		String[] otherArgs = new GenericOptionsParser(conf, args)
-				.getRemainingArgs();
 
 		String output = null;
 		String input = null;
@@ -51,12 +35,12 @@ public class InternetAccessCount {
 		// Retrieve input parameters
 		try {
 
-			output = otherArgs[0];
-			input = otherArgs[1];
-			targetValue = otherArgs[2];
-			fromDate = otherArgs[3];
-			toDate = otherArgs[4];
-			priorityString = otherArgs[5];
+			output = args[0];
+			input = args[1];
+			targetValue = args[2];
+			fromDate = args[3];
+			toDate = args[4];
+			priorityString = args[5];
 
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.exit(1);
