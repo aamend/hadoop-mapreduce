@@ -13,6 +13,7 @@
         <module>index</module>
         <module>input-split</module>
         <module>radius</module>
+        <module>sandbox</module>
     </modules>
 
     <properties>

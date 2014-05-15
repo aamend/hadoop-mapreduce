@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 
-import com.aamend.hadoop.mapreduce.service.IndexService;
+import com.aamend.hadoop.mapreduce.index.service.IndexService;
 
 public class Query {
 
