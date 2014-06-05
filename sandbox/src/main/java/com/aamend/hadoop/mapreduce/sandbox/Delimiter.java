@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 
 /**
- * Created by antoine on 15/05/14.
+ * Created by antoine on 05/06/14.
  */
 public class Delimiter {
 
