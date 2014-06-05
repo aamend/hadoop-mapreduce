@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/input-split/input-split.iml" filepath="$PROJECT_DIR$/input-split/input-split.iml" />
       <module fileurl="file://$PROJECT_DIR$/mapreduce.iml" filepath="$PROJECT_DIR$/mapreduce.iml" />
       <module fileurl="file://$PROJECT_DIR$/radius/radius.iml" filepath="$PROJECT_DIR$/radius/radius.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sandbox/sandbox.iml" filepath="$PROJECT_DIR$/sandbox/sandbox.iml" />
     </modules>
   </component>
 </project>

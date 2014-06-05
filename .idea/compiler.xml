@@ -28,6 +28,7 @@
         <module name="inputsplit" />
         <module name="mapreduce-index" />
         <module name="radius" />
+        <module name="sandbox" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -38,6 +39,7 @@
       <module name="inputsplit" target="1.6" />
       <module name="mapreduce" target="1.6" />
       <module name="radius" target="1.6" />
+      <module name="sandbox" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
