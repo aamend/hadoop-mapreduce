@@ -68,7 +68,7 @@ public class HadoopClassPath {
         DistributedCache.addFileToClassPath(hdfsJar, conf);
     }
 
-    public class MyClass{
+    public class MyClass {
 
     }
 }
